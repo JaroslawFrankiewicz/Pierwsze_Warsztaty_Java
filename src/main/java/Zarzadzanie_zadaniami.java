@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Zarzadzanie_zadaniami {
     static ArrayList<String> toDoList;
-    static final String fileName = "tasts.csv";
+    static String fileName = "tasts.csv";
 
     public static class ConsoleColors {
         // Reset
@@ -143,8 +143,8 @@ public class Zarzadzanie_zadaniami {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Select Index: ");
         int index = Integer.parseInt(scanner.nextLine());
-        System.out.println(toDoList.get(index));
         try {
+            System.out.println(toDoList.get(index));
             if (index > toDoList.size()) {
                 throw new IndexOutOfBoundsException("Entered incorrect data!");
             } else {
