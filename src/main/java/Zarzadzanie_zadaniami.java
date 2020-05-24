@@ -1,43 +1,32 @@
 import org.apache.commons.validator.GenericValidator;
-
-import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Zarzadzanie_zadaniami {
     static ArrayList<String> toDoList;
     static final String fileName = "tasts.csv";
 
-    public class ConsoleColors {
+    public static class ConsoleColors {
         // Reset
         public static final String RESET = "\033[0m";  // Text Reset
 
         // Regular Colors
-        public static final String BLACK = "\033[0;30m";   // BLACK
-        public static final String RED = "\033[0;31m";     // RED
-        public static final String GREEN = "\033[0;32m";   // GREEN
+//        public static final String BLACK = "\033[0;30m";   // BLACK
+//        public static final String RED = "\033[0;31m";     // RED
+//        public static final String GREEN = "\033[0;32m";   // GREEN
         public static final String YELLOW = "\033[0;33m";  // YELLOW
         public static final String BLUE = "\033[0;34m";    // BLUE
-        public static final String PURPLE = "\033[0;35m";  // PURPLE
-        public static final String CYAN = "\033[0;36m";    // CYAN
-        public static final String WHITE = "\033[0;37m";   // WHITE
+//        public static final String PURPLE = "\033[0;35m";  // PURPLE
+//        public static final String CYAN = "\033[0;36m";    // CYAN
+//        public static final String WHITE = "\033[0;37m";   // WHITE
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         toDoList = new ArrayList<>();
-        Scanner scanner = new Scanner(System.in);
-        int index;
-        Scanner input = new Scanner(System.in);
-
 
         while (true) {
             displayMenu();
@@ -58,16 +47,21 @@ public class Zarzadzanie_zadaniami {
                 + "\nProszę wybrać opcję: ");
         String selectedMenu = input.nextLine();
 
-        if (selectedMenu.equals("1")) {
-            showToDoList();
-        } else if (selectedMenu.equals("2")) {
-            addToDoList();
-        } else if (selectedMenu.equals("3")) {
-            deleteTodoList();
-        } else if (selectedMenu.equals("4")) {
-            System.exit(0);
-        } else {
-            System.out.println("Chose again from menu!");
+        switch (selectedMenu) {
+            case "1":
+                showToDoList();
+                break;
+            case "2":
+                addToDoList();
+                break;
+            case "3":
+                deleteTodoList();
+                break;
+            case "4":
+                System.exit(0);
+            default:
+                System.out.println("Chose again from menu!");
+                break;
         }
     }
 
@@ -98,7 +92,7 @@ public class Zarzadzanie_zadaniami {
             System.out.println("TODO LIST:");
             int index = 0;
             for (String data : toDoList) {
-                System.out.println(String.format("%d    %s", index, data));
+                System.out.println(String.format(ConsoleColors.YELLOW +"%d    %s" + ConsoleColors.RESET, index, data));
                 index++;
             }
         } else {
@@ -113,7 +107,7 @@ public class Zarzadzanie_zadaniami {
         System.out.println("Please add task description");
         String description = scanner.nextLine();
         System.out.println("Please add task due date");
-        String dueDate = "";
+        String dueDate;
         while (true) {
             dueDate = scanner.nextLine();
             if (GenericValidator.isDate(dueDate, "yyyy-MM-dd", true)) {
@@ -124,7 +118,7 @@ public class Zarzadzanie_zadaniami {
         }
         System.out.println("Is your task is important: true/false");
         System.out.print("Chose 't' for true or 'f for false: ");
-        String isImportant = "";
+        String isImportant;
         String reply = scanner.nextLine();
         if (reply.equalsIgnoreCase("t")) {
             isImportant = "true";
@@ -134,7 +128,7 @@ public class Zarzadzanie_zadaniami {
             isImportant = "???";
         }
 
-        String newTodoList = new String(description + ", " + dueDate + ", " + isImportant);
+        String newTodoList = description + ", " + dueDate + ", " + isImportant;
         try {
             // write to file
             FileWriter fileWriter = new FileWriter(fileName, true);
@@ -144,7 +138,6 @@ public class Zarzadzanie_zadaniami {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-        System.out.println(toDoList);
     }
 
     //    usuwanie zadań
@@ -155,7 +148,7 @@ public class Zarzadzanie_zadaniami {
         int index = Integer.parseInt(scanner.nextLine());
         System.out.println(toDoList.get(index));
         try {
-            if (index > toDoList.size() - 1) {
+            if (index > toDoList.size()) {
                 throw new IndexOutOfBoundsException("Entered incorrect data!");
             } else {
 

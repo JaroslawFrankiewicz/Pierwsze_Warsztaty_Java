@@ -1,13 +1,9 @@
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.math.NumberUtils;
-
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -61,23 +57,8 @@ public class Warsztat {
                 default:
                     System.out.println("Please select a correct option.");
             }
-//            args(OPTIONS);
-//            displayMenu();
         }
     }
-
-    // wyświetlane menu
-//    private static void displayMenu() {
-//        System.out.print(ConsoleColors.BLUE + "========================\n"
-//                + "Task menu: \n \n" + ConsoleColors.RESET
-//                + "1. Add \n"
-//                + "2. Remove \n"
-//                + "3. List \n"
-//                + "4. Exit\n"
-//                + ConsoleColors.BLUE + "========================\n"
-//                + "\nProszę wybrać opcję: ");
-//
-//    }
 
     // pobieranie danych z pliku
     public static String[][] addingToTab(String fileName) {
@@ -101,9 +82,6 @@ public class Warsztat {
         }
         return tab;
     }
-
-//        File file = new File("tasks.csv);
-//    Scanner scan = new Scanner("tasks.csv");
 
     // Wyświetlanie listy zadań
     public static void printTab(String[][] tab) {
@@ -178,7 +156,6 @@ public class Warsztat {
         for (int i = 0; i < tab.length; i++) {
             lines[i] = String.join(",", tab[i]);
         }
-
         try {
             Files.write(dir, Arrays.asList(lines));
         } catch (IOException ex) {
@@ -186,20 +163,3 @@ public class Warsztat {
         }
     }
 }
-
-
-//        try {
-//            File file = new File(fileName);
-//            Scanner fileReader = new Scanner(file);
-//
-//            // load file contents into todoLists array
-//            todoLists.clear();
-//            while (fileReader.hasNextLine()) {
-//                String data = fileReader.nextLine();
-//                todoLists.add(data);
-//
-//            }
-//
-//        } catch (FileNotFoundException e) {
-//            System.out.println("Error due to: " + e.getMessage());
-//        }
