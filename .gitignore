@@ -130,6 +130,8 @@ cmake-build-*/
 
 # IntelliJ
 out/
+.gitignore
+pom.xml
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
