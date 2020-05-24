@@ -1,0 +1,4 @@
+nowy task, 2020-06-10, true         
+najnowszy task, 2020-06-20, true         
+testowy task, 2020-05-27, true    
+task1, task2, task3, 2020-06-29, false 
