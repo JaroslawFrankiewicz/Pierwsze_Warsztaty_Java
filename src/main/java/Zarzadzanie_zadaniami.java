@@ -73,12 +73,9 @@ public class Zarzadzanie_zadaniami {
             File file = new File(fileName);
             Scanner fileReader = new Scanner(file);
 
-            // load file contents into todoLists array
-//             toDoList.clear();
             while (fileReader.hasNextLine()) {
                 String data = fileReader.nextLine();
                 toDoList.add(data);
-//                System.out.println(toDoList);
             }
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());

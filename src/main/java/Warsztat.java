@@ -33,7 +33,6 @@ public class Warsztat {
     public static void main(String[] args) {
         todoList = addingToTab(FILE_NAME);
         printOptions(OPTIONS);
-//        displayMenu();
         todoList = addingToTab("tasts.csv");
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNextLine()) {
