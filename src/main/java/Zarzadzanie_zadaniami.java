@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Zarzadzanie_zadaniami {
     static ArrayList<String> toDoList;
-    static String fileName = "tasts.csv";
+    static final String fileName = "tasts.csv";
 
     public static class ConsoleColors {
         // Reset
@@ -25,6 +25,7 @@ public class Zarzadzanie_zadaniami {
 //        public static final String WHITE = "\033[0;37m";   // WHITE
     }
 
+    @SuppressWarnings("InfiniteLoopStatement")
     public static void main(String[] args) {
         toDoList = new ArrayList<>();
 
@@ -86,7 +87,7 @@ public class Zarzadzanie_zadaniami {
     private static void showToDoList() {
         readData(fileName);
         if (toDoList.size() > 0) {
-            System.out.println("TODO LIST:");
+            System.out.println(ConsoleColors.YELLOW +"TODO LIST:"+ ConsoleColors.RESET);
             int index = 0;
             for (String data : toDoList) {
                 System.out.println(String.format(ConsoleColors.YELLOW +"%d    %s" + ConsoleColors.RESET, index, data));

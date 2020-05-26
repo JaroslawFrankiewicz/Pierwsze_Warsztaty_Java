@@ -10,7 +10,6 @@ import java.util.Scanner;
 
 public class Warsztat {
     private static String[][] todoList;
-    //    private static ArrayList<String> todoLists;
     private static final String FILE_NAME = "tasts.csv";
     private static final String[] OPTIONS = {"add", "remove", "list", "exit"};
 
